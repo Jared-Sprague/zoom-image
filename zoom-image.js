@@ -65,13 +65,10 @@ function draw() {
 
 function updateZoomSelectRect() {
   var cursorX, cursorY;
-  if (isMobile.any) {
-    cursorX = touchX;
-    cursorY = touchY;
-  } else {
-    cursorX = mouseX;
-    cursorY = mouseY;
-  }
+  
+  cursorX = mouseX;
+  cursorY = mouseY;
+  
   if (cursorX === 0 && cursorY === 0) {
     cursorX = floor((proverbs.width / 2) - (RECT_WIDTH / 2));
     cursorY = floor((proverbs.height / 2) - (RECT_HEIGHT / 2));
@@ -110,8 +107,7 @@ function touchMoved() {
 }
 
 function touchEnded() {
-  var origin = isMobile.any ? createVector(touchX, touchY) :
-    createVector(mouseX, mouseY);
+  var origin = createVector(mouseX, mouseY);
   var topLeftDist = p5.Vector.dist(destTopLeft, origin);
   var bottomRightDist = p5.Vector.dist(destBottomRight, origin);
   var multiplierA;
